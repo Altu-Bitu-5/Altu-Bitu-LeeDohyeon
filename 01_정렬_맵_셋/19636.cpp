@@ -18,14 +18,15 @@ int main(void){
     
 
     //기초 대사량 변화 고려하지 않았을 때 연산 & 출력
-    for(int i=0; i<d; i++){
-        leftover = d_in_energy - (d_out_energy+base);
-        w1 += leftover;
-    }
-    if(w1 <= 0 || base <= 0)
+    leftover = d_in_energy - (d_out_energy+base);
+    w1 += leftover * d;
+
+    if(w1 <= 0){
             cout<<"Danger Diet"<<'\n';
-    else
+    }
+    else{
         cout << w1 << " " << base << '\n';
+    }
 
     //기초 대사량 변화 고려했을 때 연산 & 출력
     for(int i=0; i<d; i++){
