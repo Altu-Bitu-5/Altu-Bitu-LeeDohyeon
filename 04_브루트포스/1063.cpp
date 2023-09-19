@@ -3,33 +3,27 @@
 
 using namespace std;
 
-pair<int, int> direction(string s) {
-    int dx[8] = { 1, -1, 0, 0, 1, -1, 1, -1 };
-    int dy[8] = { 0, 0, -1, 1, 1, 1, -1, -1 };
-    if (s == "R") {
-        return { dx[0], dy[0] };
+pair<int, int> direction(string str) {
+    int dx[8] = {1, -1};
+    int dy[8] = {1, -1};
+
+    int x = 0, y = 0;
+
+    for(char s : str){
+        if(s == 'R'){
+            x = dx[0];
+        }
+        else if(s == 'L'){
+            x = dx[1];
+        }
+        else if(s== 'B'){
+            y = dy[1];
+        }
+        else {
+            y = dy[0];
+        }
     }
-    else if (s == "L") {
-        return { dx[1], dy[1] };
-    }
-    else if (s == "B") {
-        return { dx[2], dy[2] };
-    }
-    else if (s == "T") {
-        return { dx[3], dy[3] };
-    }
-    else if (s == "RT") {
-        return { dx[4], dy[4] };
-    }
-    else if (s == "LT") {
-        return { dx[5], dy[5] };
-    }
-    else if (s == "RB") {
-        return { dx[6], dy[6] };
-    }
-    else {
-        return { dx[7], dy[7] };
-    }
+    return {x, y};
 }
 
 void lastLocation(vector<string> move, int loc[]) {

@@ -2,13 +2,13 @@
 
 using namespace std;
 
-int add(int set, int x) {
+const int ALL = (1<<20)-1;
+
+void add(int &set, int x) {
 	set |= 1<<(x-1);
-	return set;
 }
-int remove(int set, int x) {
+void remove(int &set, int x) {
 	set &= ~(1<<(x-1));
-	return set;
 }
 void check(int set, int x) {
 	if (set & (1<<(x-1))) { //set과 x가 모두 1인 경우만 결과값이 1로 true 
@@ -19,9 +19,8 @@ void check(int set, int x) {
 	}
 }
 
-int toggle(int set, int x) {
+void toggle(int &set, int x) {
 	set ^= 1 << (x - 1);
-	return set;
 }
 
 
@@ -43,12 +42,12 @@ int main() {
 		cin >> op;
 		if (op == "add") {
 			cin >> x;
-			set = add(set, x);
+			add(set, x);
 
 		}
 		else if (op == "remove") {
 			cin >> x;
-			set = remove(set, x);
+			remove(set, x);
 		}
 		else if (op == "check") {
 			cin >> x;
@@ -56,10 +55,10 @@ int main() {
 		}
 		else if (op == "toggle") {
 			cin >> x;
-			set = toggle(set, x);
+			toggle(set, x);
 		}
 		else if (op == "all") {
-			set = (1 << 20) - 1;
+			set = ALL;
 		}
 		else if (op == "empty") {
 			set = 0;
