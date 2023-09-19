@@ -1,27 +1,34 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
+bool isValid(int ans){
+	while(ans>=666){
+		if(ans%1000==666){
+			return true;
+		}
+		ans/=10;
+	}
+	return false;
+
+}
+
+
 int find666(int n) {
 	int ans = 666;
-	string s;
 	int c = 0; // 몇 번째 작은 종말의 수인지 저장하는 변수
 	while (1) {
-		s = to_string(ans); //숫자를 문자로 변환
-		for (int i = 0; i <= s.length() - 3; i++) {
-			if (s [i]== '6' && s[i + 1] == '6' && s[i + 2] == '6') { //6이 세번 연속되는지 확인
-				c++; //연속된다면 c를 증가
-				if (c == n) { //c가 n번째이면 해당 수를 반환한다.
-					return ans;
-				}
-				else { //아니면 반복문을 빠져나와 다음 종말의 수를 찾는다.
-					break;
-				}
-			}
+		//1000으로 나눈 나머지가 666인지 확인한다.
+		//666이 아니라면 10으로 나누어 확인을 반복한다.
+		if(isValid(ans)){
+			c++;
+		}
+		if(c==n){
+			return ans;
 		}
 		ans++;
 	}
+	return ans;
 }
 
 int main() {
