@@ -5,7 +5,7 @@ using namespace std;
 const int ALPHA = 26;
 
 //바퀴에 있는 문자의 유효성 검사 & 중복 체크
-bool isValid(vector<char>& wheel, int s, char c, vector<bool>alphabet){
+bool isValid(vector<char>& wheel, int s, char c, vector<bool>& alphabet){
     if(wheel[s] == c){ //해당 칸이 이미 c인 경우
         return true;
     }
@@ -14,11 +14,10 @@ bool isValid(vector<char>& wheel, int s, char c, vector<bool>alphabet){
         return false;
     }
 
-    else {
-        wheel[s] = c;
-        alphabet[c - 'A'] = true;
-        return true;
-    }
+    wheel[s] = c;
+    alphabet[c - 'A'] = true;
+    return true;
+
 }
 
 
