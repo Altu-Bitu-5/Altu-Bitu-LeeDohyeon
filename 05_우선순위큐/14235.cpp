@@ -33,8 +33,23 @@ int main() {
     cin >> n;
     while(n--){
         cin >> a;
-        printGift(a, gift);
+        if(a == 0){
+            if(gift.empty()){
+                cout << "-1\n";
+            }
+            else{
+                cout << gift.top()<<"\n";
+                gift.pop();
+            }
+        }
+        else{
+            int value;
+            while(a--){
+                cin >> value;
+                gift.push(value);
+            }
+        }
     }
-    
+
     return 0;
 }
